@@ -1,1 +1,1 @@
-# Game-Shop-Anuglar-App
+# Game-Shop-Angular-App
