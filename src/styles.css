@@ -2,3 +2,32 @@
 * {
     font-family: 'Bruno Ace', cursive;
 }
+
+::-webkit-scrollbar {
+    width: 1em;
+    background-color: #212121;
+}
+
+::-webkit-scrollbar-track {
+    background: #212121;
+    border-radius: 100vw;
+    margin-block: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+    border: .25em solid #212121;
+    border-radius: 100vw;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #727272;
+    cursor: pointer;
+}
+
+@supports (scrollbar-color: red blue) {
+    * {
+        scrollbar-color: rgb(255, 255, 255) #212121;
+    }
+}
