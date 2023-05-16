@@ -1,0 +1,59 @@
+.card {
+    width: auto;
+    height: auto;
+    min-height: 237px;
+    border-radius: 25px;
+    margin-top: 40px;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: fill;
+    opacity: 1;
+    cursor: pointer;
+    background-position: center;
+}
+
+.card-overlay {
+    width: auto;
+    height: auto;
+    min-height: 237px;
+    border-radius: 25px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.50);
+    outline: 1px solid rgba(0, 0, 0, 0.50);
+    position: relative;
+}
+
+h2 {
+    color: white;
+    font-size: 28px;
+    max-width: 50%;
+    position: absolute;
+    top: 102px;
+    left: 48px;
+}
+
+img {
+    position: absolute;
+    width: auto;
+    height: 259px;
+    bottom: 0px;
+    right: 0px;
+}
+
+@keyframes bounce {
+    from {
+        height: 259px;
+    }
+
+    to {
+        height: 279px;
+    }
+}
+
+.card-overlay:hover>img {
+    animation-name: bounce;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
