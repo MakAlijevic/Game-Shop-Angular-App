@@ -24,7 +24,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "Games.json",
+                "glob": "**/*.json",
                 "input": "./",
                 "output": "./assets/"
               }

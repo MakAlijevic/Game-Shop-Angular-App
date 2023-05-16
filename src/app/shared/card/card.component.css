@@ -60,10 +60,28 @@ h2 {
     max-width: 85%;
 }
 
-h4 {
+.view-tag {
     position: absolute;
     bottom: 16px;
     right: 21px;
     color: #D9D9D9;
     font-size: 14px;
+}
+
+.sale-tag {
+    background-color: red;
+    width: 52px;
+    height: 29px;
+    position: absolute;
+    top: 32px;
+    right: 21px;
+    border-radius: 25px;
+}
+
+.sale-val {
+    color: white;
+    font-size: 15px;
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
 }

@@ -1,0 +1,8 @@
+.max-banner {
+    height: 513px;
+    background-image: url("../../assets/ENT-02_Cyberpunk_2077BG003714.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: fill;
+}

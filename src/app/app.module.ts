@@ -8,6 +8,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from './shared/card/card.component';
+import { MinBannerComponent } from './min-banner/min-banner.component';
+import { MaxBannerComponent } from './max-banner/max-banner.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CardComponent } from './shared/card/card.component';
     NavbarComponent,
     FooterComponent,
     MainPageComponent,
-    CardComponent
+    CardComponent,
+    MinBannerComponent,
+    MaxBannerComponent
   ],
   imports: [
     BrowserModule,
