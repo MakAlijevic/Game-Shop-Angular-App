@@ -1,6 +1,6 @@
 .head-banner {
     width: auto;
-    height: 663px;
+    height: 563px;
     overflow-y: hidden;
     position: relative;
     top: -50px;
@@ -16,6 +16,7 @@ button {
     height: 100%;
     position: absolute;
     object-fit: cover;
+    top: 50px;
 }
 
 .curved {
@@ -70,4 +71,13 @@ h1 {
 .categories {
     margin-top: 60px;
     margin-bottom: 80px;
+}
+
+.consoles {
+    margin-top: 60px;
+}
+
+#charachter-consoles img {
+    height: 610px;
+    width: auto;
 }

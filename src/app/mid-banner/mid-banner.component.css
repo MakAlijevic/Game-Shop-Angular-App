@@ -1,0 +1,9 @@
+.mid-banner {
+    height: 290px;
+    width: 100%;
+    background-image: url("https://static-cms.carrefour.fr/sites/default/files/2020-10/jeux-video-generique-banniere-edito-desktop_3072x354.jpg?itok=gX5e3T-o");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: fill;
+}

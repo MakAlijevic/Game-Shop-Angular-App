@@ -75,13 +75,67 @@
         </div>
         <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
+                <app-category-card [title]="'Action'"
+                    [charachter]="'../../assets/Assassins-Creed-Character-PNG-File.png'"
+                    [background]="'https://rare-gallery.com/uploads/posts/1182346-video-games-world-Assassins-Creed-screenshot-pc-game.jpg'"></app-category-card>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
+                <app-category-card [title]="'Adventure'" [charachter]="'../../assets/dinosaur_PNG16580.png'"
+                    [background]="'https://cdn.mos.cms.futurecdn.net/vdgXJvE3EC3WFgVQihSeaR.jpg'"></app-category-card>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
+                <app-category-card [title]="'FPS'"
+                    [charachter]="'../../assets/call-of-duty-black-center-soldier-image-29.png'"
+                    [background]="'https://wallpapers.com/images/featured/zh69toakzofabqid.jpg'"></app-category-card>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <app-category-card [title]="'Racing'" [charachter]="'../../assets/car-image.png'"
+                    [background]="'https://wallpapercave.com/wp/wp5435284.jpg'"></app-category-card>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <app-category-card [title]="'RPG'"
+                    [charachter]="'../../assets/562-5628946_gta-v-trevor-png-png-download-gta-5.png'"
+                    [background]="'https://wallpapercrafter.com/th8005/1415201-Grand-theft-auto-v-Gta-5-Helicopter-Sky-Building.jpg'"></app-category-card>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <app-category-card [title]="'Sci-Fi'"
+                    [charachter]="'../../assets/pngtree-high-tech-sci-fi-cyberpunk-style-movie-game-character-portrait-star-png-image_6619916.png'"
+                    [background]="'https://cdn.mos.cms.futurecdn.net/mrTNYJ3HdEZUxoJSHmxFsk.jpg'"></app-category-card>
+            </div>
+        </div>
+    </div>
+    <app-mid-banner></app-mid-banner>
+    <div class="container consoles">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-1 col-md-2 col-sm-3 col-3"></div>
+            <div class="col-lg-10 col-md-8 col-sm-6 col-6 text-center" id="title">
+                <h1>Consoles</h1>
+            </div>
+            <div class="col-lg-1 col-md-2 col-sm-3 col-3 text-center">
+                <button class="btn view-all-btn">
+                    View All
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 d-none d-xl-block" id="charachter-consoles">
+                <img src="../../assets/84258-of-hunt-mercenary-witcher-wild-geralt-rivia.png" alt="charachter">
+            </div>
+            <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <app-card></app-card>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <app-card></app-card>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <app-card></app-card>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
+                        <app-card></app-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

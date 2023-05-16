@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { CardComponent } from './shared/card/card.component';
 import { MinBannerComponent } from './min-banner/min-banner.component';
 import { MaxBannerComponent } from './max-banner/max-banner.component';
+import { CategoryCardComponent } from './main-page/category-card/category-card.component';
+import { MidBannerComponent } from './mid-banner/mid-banner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MaxBannerComponent } from './max-banner/max-banner.component';
     MainPageComponent,
     CardComponent,
     MinBannerComponent,
-    MaxBannerComponent
+    MaxBannerComponent,
+    CategoryCardComponent,
+    MidBannerComponent
   ],
   imports: [
     BrowserModule,
