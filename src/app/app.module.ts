@@ -12,6 +12,7 @@ import { MinBannerComponent } from './min-banner/min-banner.component';
 import { MaxBannerComponent } from './max-banner/max-banner.component';
 import { CategoryCardComponent } from './main-page/category-card/category-card.component';
 import { MidBannerComponent } from './mid-banner/mid-banner.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MidBannerComponent } from './mid-banner/mid-banner.component';
     MinBannerComponent,
     MaxBannerComponent,
     CategoryCardComponent,
-    MidBannerComponent
+    MidBannerComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
