@@ -1,0 +1,80 @@
+.modal-content {
+    background-color: black;
+    border-radius: 25px;
+}
+
+.btn-close {
+    color: white;
+    opacity: 1;
+}
+
+.modal-header {
+    height: 10px;
+    margin-top: 4px;
+    border-color: black;
+}
+
+.container {
+    color: white;
+}
+
+.cover {
+    width: auto;
+    height: auto;
+    min-height: 327px;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 32px;
+    background-color: black;
+    background-image: url("https://i.ytimg.com/vi/4uP2MyUL49s/maxresdefault.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: fill;
+    opacity: 1;
+    background-position: center;
+}
+
+.add-to-cart-btn {
+    color: white;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color: #545454;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #BF000C;
+    color: white;
+}
+
+.add-to-cart-btn:active {
+    background: #5C0005;
+    border: 1px solid #210002;
+    border-radius: 50px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #B5B5B5;
+}
+
+h2 span {
+    color: #BC000F;
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 18px;
+    color: #B5B5B5;
+    text-align: justify;
+}
+
+h3 span {
+    color: white;
+    word-spacing: 4px;
+}
