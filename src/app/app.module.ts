@@ -13,6 +13,8 @@ import { MaxBannerComponent } from './max-banner/max-banner.component';
 import { CategoryCardComponent } from './main-page/category-card/category-card.component';
 import { MidBannerComponent } from './mid-banner/mid-banner.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { GenresPageComponent } from './genres-page/genres-page.component';
+import { ProductDetailsModalComponent } from './shared/product-details-modal/product-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SearchPageComponent } from './search-page/search-page.component';
     MaxBannerComponent,
     CategoryCardComponent,
     MidBannerComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    GenresPageComponent,
+    ProductDetailsModalComponent
   ],
   imports: [
     BrowserModule,
