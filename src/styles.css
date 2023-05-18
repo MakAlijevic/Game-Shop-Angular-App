@@ -3,6 +3,10 @@
     font-family: 'Bruno Ace', cursive;
 }
 
+body {
+    background-color: #212121;
+}
+
 ::-webkit-scrollbar {
     width: 1em;
     background-color: #212121;
