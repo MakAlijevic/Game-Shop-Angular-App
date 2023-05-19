@@ -16,6 +16,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { GenresPageComponent } from './genres-page/genres-page.component';
 import { ProductDetailsModalComponent } from './shared/product-details-modal/product-details-modal.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
+import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
     SearchPageComponent,
     GenresPageComponent,
     ProductDetailsModalComponent,
-    CartModalComponent
+    CartModalComponent,
+    CheckoutModalComponent
   ],
   imports: [
     BrowserModule,
