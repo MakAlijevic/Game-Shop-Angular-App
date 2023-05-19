@@ -12,7 +12,7 @@
 .navbar {
     background-color: #0D0D0D !important;
     height: 80px;
-    z-index: 10000;
+    z-index: 100;
 }
 
 #navbar-logo {
