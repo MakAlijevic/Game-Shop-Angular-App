@@ -15,6 +15,7 @@ import { MidBannerComponent } from './mid-banner/mid-banner.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { GenresPageComponent } from './genres-page/genres-page.component';
 import { ProductDetailsModalComponent } from './shared/product-details-modal/product-details-modal.component';
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductDetailsModalComponent } from './shared/product-details-modal/pro
     MidBannerComponent,
     SearchPageComponent,
     GenresPageComponent,
-    ProductDetailsModalComponent
+    ProductDetailsModalComponent,
+    CartModalComponent
   ],
   imports: [
     BrowserModule,
