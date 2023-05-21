@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game.model';
 import { GamesService } from 'src/services/games.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-product-details-modal',
@@ -11,7 +12,7 @@ export class ProductDetailsModalComponent implements OnInit {
 
   activeGame: Game[] = [];
 
-  constructor(private gamesService: GamesService) {
+  constructor(private gamesService: GamesService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -25,5 +26,9 @@ export class ProductDetailsModalComponent implements OnInit {
       return "url(" + this.activeGame[0].sample_cover.image + ")";
     }
     return undefined;
+  }
+
+  addItemToCart(gameId: number) {
+    this.userService.addItemToCart(gameId);
   }
 }
