@@ -15,10 +15,12 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.gamesService.getSearchGames("");
+    this.gamesService.getSearchGenres("");
   }
 
   searchGames() {
     this.gamesService.getSearchGames(this.searchParam);
+    this.gamesService.searchParam = this.searchParam;
     this.router.navigate(['/search']);
   }
 

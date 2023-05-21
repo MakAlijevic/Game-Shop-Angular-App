@@ -21,6 +21,9 @@ export class ProductDetailsModalComponent implements OnInit {
   }
 
   getImageUrl() {
-    return "url(" + this.activeGame[0].sample_cover.image + ")"
+    if (this.activeGame.length > 0 && this.activeGame[0].sample_cover) {
+      return "url(" + this.activeGame[0].sample_cover.image + ")";
+    }
+    return undefined;
   }
 }

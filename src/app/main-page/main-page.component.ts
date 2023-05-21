@@ -28,12 +28,16 @@ export class MainPageComponent implements OnInit {
     })
     this.gamesService.featuredConsoles.subscribe(result => {
       this.featuredConsoles = result;
-      console.log(result);
 
     })
   }
 
   getActiveGame(id: number) {
     this.gamesService.getActiveGame(id);
+  }
+
+  searchGamesByGenre(genreName: string) {
+    this.gamesService.activeGenre.next(genreName);
+    this.gamesService.getSearchGames("");
   }
 }

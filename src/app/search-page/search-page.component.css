@@ -48,6 +48,12 @@ h4 {
     margin-bottom: 6px;
 }
 
+.dropdown-menu {
+    max-height: 200px;
+    max-width: 300px;
+    overflow-y: auto;
+}
+
 .dropdown-btn {
     width: 100%;
     height: 40px;

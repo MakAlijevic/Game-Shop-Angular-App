@@ -1,15 +1,15 @@
 <div class="card" [ngStyle]="{'background-image': getImageUrl()}">
     <div class="card-overlay text-start">
         <h3>
-            {{title}}
+            {{item?.title}}
         </h3>
-        <div class="sale-tag" *ngIf="sale !== undefined && sale > 0">
+        <div class="sale-tag" *ngIf="item?.sale !== undefined && item!.sale > 0">
             <h4 class="sale-val">
-                {{sale}}%
+                {{item?.sale}}%
             </h4>
         </div>
         <h2>
-            ${{price}}
+            ${{item?.moby_score}}
         </h2>
         <h4 class="view-tag">
             View >

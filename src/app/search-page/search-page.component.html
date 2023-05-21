@@ -11,12 +11,13 @@
                     <h4 class="col-12 col-md-4 col-lg-4">Genre</h4>
                     <button class="btn dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All
+                        {{activeGenre}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item">Action</a></li>
-                        <li><a class="dropdown-item">Another action</a></li>
-                        <li><a class="dropdown-item">Something else here</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveGenre('All')">All</a></li>
+                        <li><a class="dropdown-item" *ngFor="let genre of allGenres"
+                                (click)="setActiveGenre(genre.genre_name)">{{genre.genre_name}}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-2 col-12 text-center"></div>
@@ -24,12 +25,13 @@
                     <h4 class="col-12 col-md-4 col-lg-4">Console</h4>
                     <button class="btn dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton2"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All
+                        {{activeConsole}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item">Action</a></li>
-                        <li><a class="dropdown-item">Another action</a></li>
-                        <li><a class="dropdown-item">Something else here</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveConsole('All')">All</a></li>
+                        <li><a class="dropdown-item" *ngFor="let console of allConsoles"
+                                (click)="setActiveConsole(console.title)">{{console.title}}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-1 col-12 text-center"></div>
@@ -40,12 +42,15 @@
                     <h4 class="col-12 col-md-4 col-lg-4">Year</h4>
                     <button class="btn dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton3"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All
+                        {{activeYear}}<span *ngIf="activeYear != 'All'">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item">Action</a></li>
-                        <li><a class="dropdown-item">Another action</a></li>
-                        <li><a class="dropdown-item">Something else here</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('All')">All</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('1980')">1980+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('1990')">1990+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('2000')">2000+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('2010')">2010+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveYear('2020')">2020+</a></li>
                     </ul>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-2 col-12 text-center"></div>
@@ -53,12 +58,17 @@
                     <h4 class="col-12 col-md-4 col-lg-4">Rating</h4>
                     <button class="btn dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton4"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All
+                        {{activeRating}}<span *ngIf="activeRating != 'All'">.0+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                        <li><a class="dropdown-item">Action</a></li>
-                        <li><a class="dropdown-item">Another action</a></li>
-                        <li><a class="dropdown-item">Something else here</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('All')">All</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('3')">3.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('4')">4.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('5')">5.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('6')">6.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('7')">7.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('8')">8.0+</a></li>
+                        <li><a class="dropdown-item" (click)="setActiveRating('9')">9.0+</a></li>
                     </ul>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-1 col-12 text-center"></div>
@@ -69,13 +79,12 @@
         <h2 class="text-center">Results</h2>
         <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let game of searchGames">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [title]="game.title"
-                    [price]="game.moby_score" [image]="game.sample_cover.image" [sale]="game.sale" [id]="game.game_id"
+                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [item]="game"
                     (click)="getActiveGame(game.game_id)"></app-card>
             </div>
         </div>
         <div class="d-flex justify-content-center mt-5">
-            <button class="btn show-more-btn">
+            <button class="btn show-more-btn" (click)="showMoreSearchGames()">
                 Show more
             </button>
         </div>

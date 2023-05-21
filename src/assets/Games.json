@@ -144,7 +144,6 @@
         },
         "sample_screenshots": [],
         "title": "New World",
-        "trending": true,
         "sale": 20
     },
     {
@@ -415,8 +414,7 @@
             "width": 460
         },
         "sample_screenshots": [],
-        "title": "F1 2021",
-        "trending": true
+        "title": "F1 2021"
     },
     {
         "alternate_titles": [
@@ -708,8 +706,7 @@
                 "width": 1200
             }
         ],
-        "title": "Call of Duty: Black Ops II",
-        "trending": true
+        "title": "Call of Duty: Black Ops II"
     },
     {
         "alternate_titles": [],
@@ -870,8 +867,7 @@
             "width": 460
         },
         "sample_screenshots": [],
-        "title": "Conan: Exiles",
-        "trending": true
+        "title": "Conan: Exiles"
     },
     {
         "alternate_titles": [],
@@ -1096,6 +1092,7 @@
             "width": 640
         },
         "sample_screenshots": [],
+        "trending": true,
         "title": "FIFA 23"
     },
     {
@@ -1374,7 +1371,8 @@
             "width": 646
         },
         "sample_screenshots": [],
-        "title": "God of War: Ragnarök"
+        "title": "God of War: Ragnarök",
+        "trending": true
     },
     {
         "alternate_titles": [
@@ -7598,7 +7596,8 @@
                 "width": 1200
             }
         ],
-        "title": "Mario Kart 8 Deluxe"
+        "title": "Mario Kart 8 Deluxe",
+        "trending": true
     },
     {
         "alternate_titles": [],
@@ -8332,7 +8331,8 @@
                 "width": 1200
             }
         ],
-        "title": "Batman: Arkham Asylum"
+        "title": "Batman: Arkham Asylum",
+        "trending": true
     },
     {
         "alternate_titles": [],
