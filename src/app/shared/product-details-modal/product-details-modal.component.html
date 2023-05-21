@@ -9,20 +9,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                            <div class="cover">
+                            <div class="cover" [ngStyle]="{'background-image': getImageUrl()}">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                            <h1>Lord of The Rings Trilogy Online</h1>
-                            <h3 class="mt-2">Genre : <span>First-person shooter</span>
+                            <h1>{{ activeGame.length > 0 ? activeGame[0].title : '' }}</h1>
+                            <h3 class="mt-2">Genre : <span *ngFor="let genre of activeGame[0]?.genres">{{
+                                    genre.genre_name }}, </span>
                             </h3>
-                            <h3 class="mt-4">Description : <span>Dive into a transformed vibrant post-apocalyptic Hope
-                                    County,
-                                    Montana, 17 years after a global nuclear catastrophe. Lead the fight against the
-                                    Highwaymen, as they seek to take over the last remaining resources. </span></h3>
+                            <h3 class="mt-4">Description : <span
+                                    *ngIf="activeGame.length > 0 && activeGame[0]?.description !== null">{{
+                                    activeGame[0].description }}</span>
+                                <span *ngIf="activeGame.length > 0 && activeGame[0]?.description === null">No
+                                    description</span>
+                            </h3>
                             <div class="row align-items-center mt-4">
                                 <div class="col-8">
-                                    <h2>Price : <span>$29.99</span></h2>
+                                    <h2>Price : <span>${{ activeGame.length > 0 ? activeGame[0].moby_score : ''
+                                            }}</span></h2>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn add-to-cart-btn">Add to cart</button>

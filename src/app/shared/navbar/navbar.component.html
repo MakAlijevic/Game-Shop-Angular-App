@@ -10,15 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="me-auto" style="margin-left: 100px;"></div>
             <div class="search d-flex justify-content-center">
-                <button id="search-icon">
+                <button id="search-icon" (click)="searchGames()">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                 </button>
-                <input type="text" class="search-input" placeholder="Search">
+                <input type="text" class="search-input" placeholder="Search" name="searchParam"
+                    [(ngModel)]="searchParam" (keyup.enter)="searchGames()">
             </div>
             <div class="me-auto"></div>
             <div class="d-flex justify-content-center">
                 <div class="dropdown">
-                    <button class="navbar-btn btn me-4 dropdown-toggle" id="navbar-list-icon" data-bs-toggle="dropdown"
+                    <button class="navbar-btn btn me-4" id="navbar-list-icon" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <i class="fa-solid fa-list fa-lg"></i>
                     </button>

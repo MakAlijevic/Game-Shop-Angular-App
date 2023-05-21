@@ -1,15 +1,15 @@
-<div class="card">
+<div class="card" [ngStyle]="{'background-image': getImageUrl()}">
     <div class="card-overlay text-start">
         <h3>
-            Lord of the Rings Trilogy
+            {{item?.title}}
         </h3>
-        <div class="sale-tag">
+        <div class="sale-tag" *ngIf="item?.sale !== undefined && item!.sale > 0">
             <h4 class="sale-val">
-                20%
+                {{item?.sale}}%
             </h4>
         </div>
         <h2>
-            $49111.99
+            ${{item?.moby_score}}
         </h2>
         <h4 class="view-tag">
             View >

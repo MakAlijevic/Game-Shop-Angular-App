@@ -17,8 +17,12 @@ export class Game {
     public sample_cover: SampleCover;
     public sample_screenshot: SampleScreenshot[];
     public title: string;
+    public trending: boolean;
+    public sale: number;
+    public is_console?: boolean;
+    public console_featured?: boolean;
 
-    constructor(alternate_titles: AlternateTitle[], description: string, game_id: number, genres: Genre[], moby_score: number, moby_url: string, num_votes: number, official_url: string, platforms: Platform[], sample_cover: SampleCover, sample_screenshot: SampleScreenshot[], title: string) {
+    constructor(alternate_titles: AlternateTitle[], description: string, game_id: number, genres: Genre[], moby_score: number, moby_url: string, num_votes: number, official_url: string, platforms: Platform[], sample_cover: SampleCover, sample_screenshot: SampleScreenshot[], title: string, trending: boolean, sale: number, is_console?: boolean, console_featured?: boolean) {
         this.alternate_titles = alternate_titles;
         this.description = description;
         this.game_id = game_id;
@@ -31,5 +35,9 @@ export class Game {
         this.sample_cover = sample_cover;
         this.sample_screenshot = sample_screenshot;
         this.title = title;
+        this.trending = trending;
+        this.sale = sale;
+        this.is_console = is_console;
+        this.console_featured = console_featured;
     }
 }
