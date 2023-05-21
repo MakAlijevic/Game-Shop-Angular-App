@@ -68,41 +68,10 @@
     <div class="container">
         <h2 class="text-center">Results</h2>
         <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card></app-card>
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let game of searchGames">
+                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [title]="game.title"
+                    [price]="game.moby_score" [image]="game.sample_cover.image" [sale]="game.sale" [id]="game.game_id"
+                    (click)="getActiveGame(game.game_id)"></app-card>
             </div>
         </div>
         <div class="d-flex justify-content-center mt-5">

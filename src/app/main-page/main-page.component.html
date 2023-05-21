@@ -15,23 +15,10 @@
             </div>
         </div>
         <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let game of trendingGames">
+                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [title]="game.title"
+                    [price]="game.moby_score" [image]="game.sample_cover.image" [sale]="game.sale" [id]="game.game_id"
+                    (click)="getActiveGame(game.game_id)"></app-card>
             </div>
         </div>
     </div>
@@ -49,14 +36,10 @@
             </div>
         </div>
         <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let game of topDealGames">
+                <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [title]="game.title"
+                    [price]="game.moby_score" [image]="game.sample_cover.image" [sale]="game.sale" [id]="game.game_id"
+                    (click)="getActiveGame(game.game_id)"></app-card>
             </div>
         </div>
     </div>
@@ -123,17 +106,10 @@
             </div>
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
-                        <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal"></app-card>
+                    <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let console of featuredConsoles">
+                        <app-card data-bs-toggle="modal" data-bs-target="#product-details-modal" [title]="console.title"
+                            [price]="console.moby_score" [image]="console.sample_cover.image" [sale]="console.sale"
+                            [id]="console.game_id" (click)="getActiveGame(console.game_id)"></app-card>
                     </div>
                 </div>
             </div>

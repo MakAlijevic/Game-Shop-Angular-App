@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
 
+  @Input() title: string = "";
+  @Input() price: number = 0.0;
+  @Input() image: string = "";
+  @Input() sale?: number;
+  @Input() id: number = 1;
+
+  getImageUrl() {
+    return "url(" + this.image + ")";
+  }
 }

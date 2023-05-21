@@ -17,6 +17,7 @@ import { GenresPageComponent } from './genres-page/genres-page.component';
 import { ProductDetailsModalComponent } from './shared/product-details-modal/product-details-modal.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CheckoutModalComponent } from './checkout-modal/checkout-modal.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
