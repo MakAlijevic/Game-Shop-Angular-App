@@ -15,7 +15,8 @@
                     </div>
                     <div class="row align-items-center mt-3" *ngFor="let cartItem of cart">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                (click)="setSelectedItemId(cartItem.game.game_id)">
                         </div>
                         <div class="col-lg-2 col-md-5 col-sm-5 col-5">
                             <div class="cover"
@@ -39,7 +40,7 @@
             <div class="modal-footer">
                 <div class="container text-end">
                     <button type="button" class="btn btn-checkout" data-bs-toggle="modal"
-                        data-bs-target="#checkout-modal">Checkout</button>
+                        data-bs-target="#checkout-modal" (click)="generateCheckout()">Checkout</button>
                 </div>
             </div>
         </div>

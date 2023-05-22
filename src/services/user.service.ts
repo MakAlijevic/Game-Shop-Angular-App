@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, forkJoin } from 'rxjs';
 import { CartItem } from 'src/models/cart-item-model';
 import { GamesService } from './games.service';
 
@@ -9,6 +9,9 @@ import { GamesService } from './games.service';
 export class UserService {
 
   public cart = new BehaviorSubject<CartItem[]>([]);
+  public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
+  public checkoutItems = new BehaviorSubject<CartItem[]>([]);
+  public totalPrice = new BehaviorSubject<number>(0);
 
   constructor(private gamesService: GamesService) { }
 
@@ -38,6 +41,40 @@ export class UserService {
       return cartItem;
     });
     this.cart.next(updatedCart);
-    console.log(this.cart.getValue());
+  }
+
+  generateCheckout() {
+    var cart = this.cart.getValue();
+    var selectedItemIds = this.selectedCartItemsIds.getValue();
+    var selectedItems: CartItem[] = [];
+    let totalPrice = 0;
+    var requests = selectedItemIds.map(itemId => this.gamesService.getGameById(itemId));
+
+    forkJoin(requests).subscribe(games => {
+      games.forEach((game, index) => {
+        if (game) {
+          var quantity = cart.find(cartItem => cartItem.game.game_id === selectedItemIds[index])?.quantity;
+          var cartItem = new CartItem(game, quantity!);
+          totalPrice = totalPrice + (game.moby_score * quantity!);
+          selectedItems.push(cartItem);
+          this.totalPrice.next(Number(totalPrice.toFixed(2)));
+        }
+      });
+    });
+    if (selectedItemIds.length === 0) {
+      this.totalPrice.next(0);
+    }
+    this.checkoutItems.next(selectedItems);
+  }
+
+  clearCartAfterCheckout() {
+    var selectedItemIds = this.selectedCartItemsIds.getValue();
+    var currentCart = this.cart.getValue();
+
+    const updatedCart = currentCart.filter(cartItem => !selectedItemIds.includes(cartItem.game.game_id));
+
+    this.cart.next(updatedCart);
+    this.selectedCartItemsIds.next([]);
+    this.totalPrice.next(0);
   }
 }
