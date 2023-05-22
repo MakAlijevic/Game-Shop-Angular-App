@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Game } from '../models/game.model';
 import { Genre } from 'src/models/genre.model';
 
@@ -17,6 +17,8 @@ export class GamesService {
   public searchGenres = new BehaviorSubject<Genre[]>([]);
   public allGenres = new BehaviorSubject<Genre[]>([]);
   public activeGenre = new BehaviorSubject<string>("All");
+
+  public itemForCart = new BehaviorSubject<Game | undefined>(undefined);
 
 
   public searchParam: string = "";
@@ -230,6 +232,12 @@ export class GamesService {
       newGenres.sort((a, b) => a.genre_name.localeCompare(b.genre_name));
       this.searchGenres.next([...expandedSearchGenres, ...newGenres.slice(0, 15)]);
     });
+  }
+
+  getGameById(gameId: number): Observable<Game | undefined> {
+    return this.http.get<Game[]>('/assets/Games.json').pipe(
+      map(games => games.find(game => game.game_id === gameId))
+    );
   }
 }
 

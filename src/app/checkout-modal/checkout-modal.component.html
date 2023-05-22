@@ -13,32 +13,19 @@
                         <h1>Checkout</h1>
                         <div class="hr"></div>
                     </div>
-                    <div class="row align-items-center mt-3">
+                    <div class="row align-items-center mt-3" *ngFor="let item of checkoutItems">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 ps-4">
-                            <div class="cover"></div>
+                            <div class="cover" [style.background-image]="'url(' + item.game.sample_cover.image + ')'">
+                            </div>
                         </div>
                         <div class="col-lg-5 col-md-6 col-sm-6 col-6">
-                            <h2 id="title">Lord of the Rings Trilogy Trilogy </h2>
+                            <h2 id="title">{{item.game.title}}</h2>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
-                            <h2 id="quantity">1</h2>
+                            <h2 id="quantity">{{item.quantity}}</h2>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
-                            <h2>$49.99</h2>
-                        </div>
-                    </div>
-                    <div class="row align-items-center mt-3">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 ps-4">
-                            <div class="cover"></div>
-                        </div>
-                        <div class="col-lg-5 col-md-6 col-sm-6 col-6">
-                            <h2 id="title">Lord of the Rings Trilogy Trilogy </h2>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
-                            <h2 id="quantity">1222</h2>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
-                            <h2>$49.99</h2>
+                            <h2>${{item.game.moby_score}}</h2>
                         </div>
                     </div>
                     <div class="hr"></div>
@@ -49,8 +36,9 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-8">
-                            <h3 class="d-inline me-lg-3">Total Price: <span>$749.96</span></h3>
-                            <button type="button" class="btn btn-checkout d-inline mb-lg-2">Confirm</button>
+                            <h3 class="d-inline me-lg-3">Total Price: <span>${{totalPrice}}</span></h3>
+                            <button type="button" class="btn btn-checkout d-inline mb-lg-2"
+                                (click)="clearCartAfterCheckout()" data-bs-dismiss="modal">Confirm</button>
                         </div>
                     </div>
                 </div>
