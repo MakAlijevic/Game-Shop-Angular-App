@@ -1,0 +1,44 @@
+<div class="modal fade" id="purchase-modal" tabindex="-1" aria-labelledby="purchase-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header justify-content-end">
+                        <button type="button" class="btn btn-close me-1" data-bs-dismiss="modal"
+                            aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row text-center">
+                        <h1>Purchase</h1>
+                        <div class="hr"></div>
+                    </div>
+                    <div class="row align-items-center mt-3" *ngFor="let item of purchasedItems">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 ps-4">
+                            <div class="cover" [style.background-image]="'url(' + item.game.sample_cover.image + ')'">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-6">
+                            <h2 id="title">{{item.game.title}}</h2>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+                            <h2 id="quantity">{{item.quantity}}</h2>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6 text-center mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+                            <h2>${{item.game.moby_score}}</h2>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="container text-end">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <h3 class="d-inline me-lg-3">Total Price: <span>${{totalPrice}}</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

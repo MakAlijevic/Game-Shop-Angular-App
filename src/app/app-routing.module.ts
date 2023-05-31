@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { GenresPageComponent } from './genres-page/genres-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'genres', component: GenresPageComponent
+  },
+  {
+    path: 'profile', component: ProfilePageComponent
   }
 ];
 

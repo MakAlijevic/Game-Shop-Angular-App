@@ -18,6 +18,8 @@ import { ProductDetailsModalComponent } from './shared/product-details-modal/pro
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { PurchaseModalComponent } from './purchase-modal/purchase-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FormsModule } from '@angular/forms';
     GenresPageComponent,
     ProductDetailsModalComponent,
     CartModalComponent,
-    CheckoutModalComponent
+    CheckoutModalComponent,
+    ProfilePageComponent,
+    PurchaseModalComponent
   ],
   imports: [
     BrowserModule,
