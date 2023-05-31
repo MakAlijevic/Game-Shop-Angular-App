@@ -20,6 +20,8 @@ import { CheckoutModalComponent } from './checkout-modal/checkout-modal.componen
 import { FormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { PurchaseModalComponent } from './purchase-modal/purchase-modal.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { PurchaseModalComponent } from './purchase-modal/purchase-modal.componen
     CartModalComponent,
     CheckoutModalComponent,
     ProfilePageComponent,
-    PurchaseModalComponent
+    PurchaseModalComponent,
+    LoginModalComponent,
+    RegistrationModalComponent
   ],
   imports: [
     BrowserModule,
