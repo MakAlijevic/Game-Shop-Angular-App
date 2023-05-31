@@ -1,0 +1,32 @@
+<div class="profilepage">
+    <div class="head-banner curved">
+        <img src="../../assets/profile-header.jpg" alt="head-banner" id="header-img">
+    </div>
+    <div class="profile-div">
+      <img src="../../assets/profile-icon.png" alt="Profile Photo" class="profile-photo">
+  </div>
+<div class="container purchases">
+  <div class="row d-flex align-items-center">
+    <div class="col-lg-1 col-md-2 col-sm-3 col-3"></div>
+    <div class="col-lg-10 col-md-8 col-sm-6 col-6 text-center" id="title">
+      <div class="row d-flex" class="username">
+        <p>Username</p>
+  </div>
+  <div class="row d-flex" class="date-joined">
+    <p>Joined: May 2, 2023</p>
+  </div>
+    </div>
+    <div class="col-lg-1 col-md-2 col-sm-3 col-3 text-center">
+        <button class="btn logout-btn" routerLink="/search">
+            Logout
+        </button>
+    </div>
+</div>
+  <h2 class="text-center">My Purchases</h2>
+  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 d-flex justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let game of trendingGames">
+      <app-card data-bs-toggle="modal" data-bs-target="#purchase-modal" [item]="game"
+          (click)="getActiveGame(game.game_id)"></app-card>
+  </div>
+  </div>
+</div>
