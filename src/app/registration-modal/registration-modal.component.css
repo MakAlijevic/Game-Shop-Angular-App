@@ -1,5 +1,5 @@
 .modal-content {
-    background-color: #0A0A0A;
+    background-color: black;
     border-radius: 25px;
     height:auto;
     width:414px;
@@ -93,12 +93,9 @@ body {
   .form-group input {
     background-color: white;
     border-radius: 20px;
-    padding: 10px;
+    padding-left: 40px;
     font-size: 16px;
-  }
-
-  .form-group input::placeholder {
-    text-indent: 30px; 
+    border: none;
   }
 
   .btn-register {
@@ -130,36 +127,3 @@ p {
     margin: 0 0px;
 }
 
-
-::-webkit-scrollbar {
-    width: 1em;
-    background-color: black;
-}
-
-::-webkit-scrollbar-track {
-    background: black;
-    border-radius: 100vw;
-    margin-block: .5rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #b3b3b3;
-    border: .25em solid #000000;
-    border-radius: 100vw;
-    cursor: pointer;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #727272;
-    cursor: pointer;
-}
-
-@media only screen and (min-width: 991px) {
-    h2 {
-        font-size: 20px;
-        color: white;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
