@@ -1,4 +1,4 @@
-<div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modal" aria-hidden="true">
+<div class="modal fade" #loginModal id="login-modal" tabindex="-1" aria-labelledby="login-modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header justify-content-end">
@@ -15,19 +15,19 @@
                           <span class="icon">
                             <i class="fa-solid fa-user fa-lg"></i>
                           </span>
-                          <input type="username" placeholder="Username">
+                          <input type="username" #usernameInput placeholder="Username">
                         </div>
                         <div class="form-group">
                             <span class="icon">
                                 <i class="fa fa-lock"></i>
                             </span>
-                            <input type="password" placeholder="Password">
+                            <input type="password" #passwordInput placeholder="Password">
                           </div>
                       </form>
                       <div class="container">
                         <div class="row justify-content-center">
                           <div class="col-10 text-center">
-                            <button type="button" class="btn btn-login d-inline mb-lg-2" data-bs-dismiss="modal">Login</button>
+                            <button type="button" class="btn btn-login d-inline mb-lg-2" data-bs-dismiss="modal" (click)="login(usernameInput.value, passwordInput.value)">Login</button>
                           </div>
                           <div class="hr"></div>
                         </div>

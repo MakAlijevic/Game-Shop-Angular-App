@@ -10,12 +10,17 @@ import { GamesService } from 'src/services/games.service';
 export class NavbarComponent implements OnInit {
 
   public searchParam: string = "";
+  isLoggedIn: boolean = false;
 
   constructor(private gamesService: GamesService, private router: Router) {
   }
+
+  
   ngOnInit(): void {
     this.gamesService.getSearchGames("");
     this.gamesService.getSearchGenres("");
+    this.isLoggedIn = localStorage.getItem('username') !== null;
+
   }
 
   searchGames() {
@@ -23,5 +28,6 @@ export class NavbarComponent implements OnInit {
     this.gamesService.searchParam = this.searchParam;
     this.router.navigate(['/search']);
   }
-
+  
 }
+

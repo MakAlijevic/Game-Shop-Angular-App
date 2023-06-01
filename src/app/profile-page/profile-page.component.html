@@ -10,14 +10,14 @@
     <div class="col-lg-1 col-md-2 col-sm-3 col-3"></div>
     <div class="col-lg-10 col-md-8 col-sm-6 col-6 text-center" id="title">
       <div class="row d-flex" class="username">
-        <p>Username</p>
+        <p>{{username}}</p>
   </div>
   <div class="row d-flex" class="date-joined">
-    <p>Joined: May 2, 2023</p>
+    <p>Joined: {{joined}}</p>
   </div>
     </div>
     <div class="col-lg-1 col-md-2 col-sm-3 col-3 text-center">
-        <button class="btn logout-btn" routerLink="/mainpage">
+        <button class="btn logout-btn" (click)="logout()">
             Logout
         </button>
     </div>

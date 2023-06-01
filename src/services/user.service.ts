@@ -2,19 +2,41 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { CartItem } from 'src/models/cart-item-model';
 import { GamesService } from './games.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from 'src/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  public user : User | undefined;
   public cart = new BehaviorSubject<CartItem[]>([]);
   public purchased = new BehaviorSubject<CartItem[]>([]);
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService, private http: HttpClient) { }
+
+  login(username: string, password: string) {
+    return this.http.get<User[]>("/assets/Users.json").subscribe(result => {
+      var user = result.find(u => u.username === username);
+      if (user) {
+        if(user.password == password) {
+          this.user = user;
+          localStorage.setItem("username", this.user.username);
+          localStorage.setItem("joined", this.user.joined);
+          window.location.reload();
+        }
+        else {
+          console.log("wrong password");
+        }
+      } else {
+        console.log("User not found");
+      }
+    });
+  }
 
   addItemToCart(gameId: number) {
     var currentCart = this.cart.getValue();

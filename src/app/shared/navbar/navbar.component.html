@@ -31,9 +31,15 @@
                 <button class="navbar-btn me-4" data-bs-toggle="modal" data-bs-target="#cart-modal">
                     <i class="fa-solid fa-cart-shopping fa-lg" id="navbar-btn-cart"></i>
                 </button>
-                <button class="navbar-btn me-4" data-bs-toggle="modal" data-bs-target="#login-modal">
+                <button class="navbar-btn" *ngIf="isLoggedIn; else loginModalButton" [routerLink]="'/profile'">
                     <i class="fa-solid fa-user fa-lg"></i>
-                </button>
+                  </button>
+                  
+                  <ng-template #loginModalButton>
+                    <button class="navbar-btn me-4" data-bs-toggle="modal" data-bs-target="#login-modal">
+                      <i class="fa-solid fa-user fa-lg"></i>
+                    </button>
+                  </ng-template>
             </div>
         </div>
     </div>
