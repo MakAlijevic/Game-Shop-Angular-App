@@ -15,31 +15,31 @@
                           <span class="icon">
                             <i class="fa-solid fa-user fa-lg"></i>
                           </span>
-                          <input type="username" placeholder="Username">
+                          <input type="username" #usernameInput placeholder="Username">
                         </div>
                         <div class="form-group">
                             <span class="icon">
                                 <i class="fa fa-envelope"></i>
                             </span>
-                            <input type="email" placeholder="Email">
+                            <input type="email" #emailInput placeholder="Email">
                           </div>
                         <div class="form-group">
                             <span class="icon">
                                 <i class="fa fa-lock"></i>
                             </span>
-                            <input type="password" placeholder="Password">
+                            <input type="password" #passwordInput placeholder="Password">
                           </div>
                           <div class="form-group">
                             <span class="icon">
                                 <i class="fa fa-lock"></i>
                             </span>
-                            <input type="confirmPassword" placeholder="Confirm Password">
+                            <input type="password" #confirmPasswordInput placeholder="Confirm Password">
                           </div>
                       </form>
                       <div class="container">
                         <div class="row justify-content-center">
                           <div class="col-10 text-center">
-                            <button type="button" class="btn btn-register d-inline mb-lg-2" data-bs-dismiss="modal">Register</button>
+                            <button type="button" class="btn btn-register d-inline mb-lg-2" data-bs-dismiss="modal" (click)="register(usernameInput.value,emailInput.value, passwordInput.value, confirmPasswordInput.value)" >Register</button>
                           </div>
                           <div class="hr"></div>
                         </div>
