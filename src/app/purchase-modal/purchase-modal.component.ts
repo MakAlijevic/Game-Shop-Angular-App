@@ -9,7 +9,7 @@ import { UserService } from 'src/services/user.service';
 })
 export class PurchaseModalComponent {
   purchasedItems: CartItem[] = [];
-  totalPriceOfPurchased: number = 0;
+  totalPrice: number = 0;
 
   constructor(private userService: UserService) {
     
@@ -17,12 +17,13 @@ export class PurchaseModalComponent {
 
   ngOnInit(): void {
     
-    this.userService.purchased.subscribe(result => {
+    /*this.userService.purchased.subscribe(result => {
       this.purchasedItems = result;
     });
-    this.userService.totalPriceOfPurchased.subscribe(result => {
-      this.totalPriceOfPurchased = result;
+    this.userService.totalPrice.subscribe(result => {
+      this.totalPrice = result;
     });
-  }
+  }*/
 
+}
 }

@@ -1,13 +1,15 @@
-import { Game } from "./game.model";
+import { CartItem } from "./cart-item-model";
 
 export class Purchase {
-    public game: Game;
+    public games: CartItem[];
     public quantity: number;
-    public date: Date;
+    public date: string;
+    public totalPrice: number;
 
-    constructor(game: Game, quantity: number, date: Date) {
-        this.game = game;
+    constructor(games: CartItem[], quantity: number, date: string, totalPrice: number) {
+        this.games = games;
         this.quantity = quantity;
         this.date = date;
+        this.totalPrice = totalPrice;
     }
 }

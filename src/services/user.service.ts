@@ -4,6 +4,7 @@ import { CartItem } from 'src/models/cart-item-model';
 import { GamesService } from './games.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/models/user.model';
+import { Purchase } from 'src/models/purchase-model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,10 @@ export class UserService {
 
   public users: User[] = [];
   public cart = new BehaviorSubject<CartItem[]>([]);
-  public purchased = new BehaviorSubject<CartItem[]>([]);
+  public purchased = new BehaviorSubject<Purchase[]>([]);
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
-  public totalPriceOfPurchased = new BehaviorSubject<number>(0);
   public isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private gamesService: GamesService, private http: HttpClient) { }
@@ -107,12 +107,23 @@ export class UserService {
 
   getPurchasedItems() {
     var totalPrice: number = 0;
+    var purchase: Purchase = {
+      games: [],
+      quantity: 0,
+      date: '',
+      totalPrice: 0
+    };
+    var date = new Date();
     const items = this.checkoutItems.getValue();
     for (var i = 0; i < items.length; i++) {
       totalPrice = totalPrice + (items[i].game.moby_score * items[i].quantity);
+      purchase.games.push(items[i]);
     }
-    this.purchased.next([...this.purchased.getValue(), ...items]);
-    this.totalPriceOfPurchased.next(totalPrice);
+    const formattedDate: string = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    purchase.date = formattedDate;
+    purchase.totalPrice = totalPrice;
+    console.log(purchase);
+    this.purchased.next([...this.purchased.getValue(), purchase]);
   }
 
   clearCartAfterCheckout() {

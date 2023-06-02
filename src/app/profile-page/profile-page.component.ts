@@ -4,6 +4,8 @@ import { Game } from '../../models/game.model';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/models/cart-item-model';
 import { UserService } from 'src/services/user.service';
+import { Purchase } from 'src/models/purchase-model';
+import { PurchaseCard } from 'src/models/purchase-card.model';
 
 @Component({
   selector: 'app-profile-page',
@@ -13,7 +15,7 @@ import { UserService } from 'src/services/user.service';
 export class ProfilePageComponent {
   username: string = localStorage.getItem("username") || "User";
   joined: string = localStorage.getItem("joined") || "unknown";
-  purchasedGames: Game[] = [];
+  purchasedGames: PurchaseCard[] = [];
 
   constructor(private gamesService: GamesService, private router: Router, private userService: UserService) {
   }
@@ -23,19 +25,20 @@ export class ProfilePageComponent {
   }
 
   getPurchasedGames() {
-    var purchasedItems: CartItem[] = [];
+    var purchasedItems: Purchase[] = [];
     this.userService.purchased.subscribe(result => {
        purchasedItems = result;
     });
 
     for (var i = 0; i < purchasedItems.length; i++) {
-      this.purchasedGames.push(purchasedItems[i].game);
+      var purchaseCard: PurchaseCard = {
+        game: purchasedItems[i].games[i].game,
+        date: purchasedItems[i].date,
+        totalPrice: purchasedItems[i].totalPrice
+      };
+      this.purchasedGames.push(purchaseCard);
       }
     }
-
-  getActiveGame(id: number) {
-    this.gamesService.getActiveGame(id);
-  }
 
   logout() {
     localStorage.clear();

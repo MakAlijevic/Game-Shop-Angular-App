@@ -1,0 +1,13 @@
+<div class="card" [ngStyle]="{'background-image': getImageUrl()}">
+    <div class="card-overlay text-start">
+        <h3>
+            {{item?.date}}
+        </h3>
+        <h2>
+            ${{item?.totalPrice}}
+        </h2>
+        <h4 class="view-tag">
+            View >
+        </h4>
+    </div>
+</div>
