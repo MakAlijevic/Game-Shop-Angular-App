@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Game } from 'src/models/game.model';
-import { PurchaseCard } from 'src/models/purchase-card.model';
 import { Purchase } from 'src/models/purchase-model';
 
 @Component({
@@ -11,10 +9,10 @@ import { Purchase } from 'src/models/purchase-model';
 export class PurchaseCardComponent {
 
   
-  @Input() item: PurchaseCard | undefined;
+  @Input() item: Purchase | undefined;
 
   getImageUrl() {
-    return "url(" + this.item?.game.sample_cover.image + ")";
+    return "url(" + this.item?.games[0].game.sample_cover.image + ")";
   }
 
 }

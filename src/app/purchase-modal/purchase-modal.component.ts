@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartItem } from 'src/models/cart-item-model';
+import { Purchase } from 'src/models/purchase-model';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -8,22 +9,12 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./purchase-modal.component.css']
 })
 export class PurchaseModalComponent {
-  purchasedItems: CartItem[] = [];
-  totalPrice: number = 0;
+  purchasedItems!: Purchase;
 
-  constructor(private userService: UserService) {
+  constructor() {
     
   }
 
   ngOnInit(): void {
-    
-    /*this.userService.purchased.subscribe(result => {
-      this.purchasedItems = result;
-    });
-    this.userService.totalPrice.subscribe(result => {
-      this.totalPrice = result;
-    });
-  }*/
-
 }
 }
