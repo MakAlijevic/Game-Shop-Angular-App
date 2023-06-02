@@ -25,6 +25,7 @@ export class CheckoutModalComponent implements OnInit {
   }
 
   clearCartAfterCheckout() {
+    this.userService.getPurchasedItems();
     this.userService.clearCartAfterCheckout();
   }
 

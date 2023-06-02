@@ -16,6 +16,7 @@ export class UserService {
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
+  public totalPriceOfPurchased = new BehaviorSubject<number>(0);
   public isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private gamesService: GamesService, private http: HttpClient) { }
@@ -104,28 +105,14 @@ export class UserService {
     this.checkoutItems.next(selectedItems);
   }
 
-  purchasedItems() {
-    var checkoutItems = this.checkoutItems.getValue();
-    var selectedItemIds = this.selectedCartItemsIds.getValue();
-    var selectedItems: CartItem[] = [];
-    let totalPrice = 0;
-    var requests = selectedItemIds.map(itemId => this.gamesService.getGameById(itemId));
-
-    forkJoin(requests).subscribe(games => {
-      games.forEach((game, index) => {
-        if (game) {
-          var quantity = checkoutItems.find(checkoutItem => checkoutItem.game.game_id === selectedItemIds[index])?.quantity;
-          var checkoutItem = new CartItem(game, quantity!);
-          totalPrice = totalPrice + (game.moby_score * quantity!);
-          selectedItems.push(checkoutItem);
-          this.totalPrice.next(Number(totalPrice.toFixed(2)));
-        }
-      });
-    });
-    if (selectedItemIds.length === 0) {
-      this.totalPrice.next(0);
+  getPurchasedItems() {
+    var totalPrice: number = 0;
+    const items = this.checkoutItems.getValue();
+    for (var i = 0; i < items.length; i++) {
+      totalPrice = totalPrice + (items[i].game.moby_score * items[i].quantity);
     }
-    this.purchased.next(selectedItems);
+    this.purchased.next([...this.purchased.getValue(), ...items]);
+    this.totalPriceOfPurchased.next(totalPrice);
   }
 
   clearCartAfterCheckout() {
