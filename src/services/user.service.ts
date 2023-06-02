@@ -10,32 +10,46 @@ import { User } from 'src/models/user.model';
 })
 export class UserService {
 
-  public user : User | undefined;
+  public users: User[] = [];
   public cart = new BehaviorSubject<CartItem[]>([]);
   public purchased = new BehaviorSubject<CartItem[]>([]);
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
+  public isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private gamesService: GamesService, private http: HttpClient) { }
 
+  register(username: string, email: string, password: string, confirmPassword: string) {
+    const newUser: User = {
+      username,
+      email,
+      password,
+      joined: new Date()
+    };
+    this.users.push(newUser); 
+  }
+
   login(username: string, password: string) {
-    return this.http.get<User[]>("/assets/Users.json").subscribe(result => {
-      var user = result.find(u => u.username === username);
-      if (user) {
-        if(user.password == password) {
-          this.user = user;
-          localStorage.setItem("username", this.user.username);
-          localStorage.setItem("joined", this.user.joined);
-          window.location.reload();
-        }
-        else {
-          console.log("wrong password");
-        }
+    const user = this.users.find(u => u.username === username);
+  
+    if (user) {
+      if (user.password === password) {
+        this.isLoggedIn.next(true);
+        const formattedDate: string = user.joined.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        localStorage.setItem("username", user.username);
+        localStorage.setItem("joined", formattedDate);
       } else {
-        console.log("User not found");
+        console.log("Wrong password");
       }
-    });
+    } else {
+      console.log("User not found");
+    }
+  }
+
+  logout() {
+    localStorage.clear();
+    this.isLoggedIn.next(false);
   }
 
   addItemToCart(gameId: number) {

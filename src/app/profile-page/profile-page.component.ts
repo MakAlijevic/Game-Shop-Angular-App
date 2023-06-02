@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { Game } from '../../models/game.model';
 import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -13,7 +14,7 @@ export class ProfilePageComponent {
   joined: string = localStorage.getItem("joined") || "unknown";
   trendingGames: Game[] = [];
 
-  constructor(private gamesService: GamesService, private router: Router) {
+  constructor(private gamesService: GamesService, private router: Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class ProfilePageComponent {
 
   logout() {
     localStorage.clear();
+    this.userService.logout();
     this.router.navigate(['/mainpage']);
   }
 }
