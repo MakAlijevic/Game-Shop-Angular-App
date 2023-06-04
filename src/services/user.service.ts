@@ -51,6 +51,7 @@ export class UserService {
 
   logout() {
     localStorage.clear();
+    this.purchased.next([]);
     this.isLoggedIn.next(false);
   }
 
