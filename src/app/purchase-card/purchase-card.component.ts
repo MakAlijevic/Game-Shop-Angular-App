@@ -8,7 +8,6 @@ import { Purchase } from 'src/models/purchase-model';
 })
 export class PurchaseCardComponent {
 
-  
   @Input() item: Purchase | undefined;
 
   getImageUrl() {

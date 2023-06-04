@@ -119,7 +119,6 @@ export class UserService {
     const formattedDate: string = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     purchase.date = formattedDate;
     purchase.totalPrice = totalPrice;
-    console.log(purchase);
     this.purchased.next([...this.purchased.getValue(), purchase]);
   }
 
@@ -142,6 +141,5 @@ export class UserService {
         }
       }
     this.activePurchase.next(purchase);
-    console.log(this.activePurchase);
   }
 }
