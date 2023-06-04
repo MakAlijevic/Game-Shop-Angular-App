@@ -9,12 +9,15 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./purchase-modal.component.css']
 })
 export class PurchaseModalComponent {
-  purchasedItems!: Purchase;
+  activePurchase: Purchase[] =[];
 
-  constructor() {
+  constructor(private userService: UserService) {
     
   }
 
   ngOnInit(): void {
-}
+    this.userService.activePurchase.subscribe(result => {
+      this.activePurchase = result;
+    })
+  }
 }

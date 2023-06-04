@@ -38,4 +38,8 @@ export class ProfilePageComponent {
     this.userService.logout();
     this.router.navigate(['/mainpage']);
   }
+
+  getActivePurchase(id: number){
+    this.userService.getActivePurchase(id);
+  }
 }

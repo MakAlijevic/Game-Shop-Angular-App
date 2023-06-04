@@ -14,6 +14,7 @@ export class UserService {
   public users: User[] = [];
   public cart = new BehaviorSubject<CartItem[]>([]);
   public purchased = new BehaviorSubject<Purchase[]>([]);
+  public activePurchase = new BehaviorSubject<Purchase[]>([]);
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
@@ -107,12 +108,7 @@ export class UserService {
 
   getPurchasedItems() {
     var totalPrice: number = 0;
-    var purchase: Purchase = {
-      games: [],
-      quantity: 0,
-      date: '',
-      totalPrice: 0
-    };
+    var purchase: Purchase = new Purchase([], 0, '', 0);
     var date = new Date();
     const items = this.checkoutItems.getValue();
     for (var i = 0; i < items.length; i++) {
@@ -135,5 +131,16 @@ export class UserService {
     this.cart.next(updatedCart);
     this.selectedCartItemsIds.next([]);
     this.totalPrice.next(0);
+  }
+
+  getActivePurchase(id: number) {
+    var purchase: Purchase[] = [];
+      for (var i = 0; i < this.purchased.getValue().length; i++) {
+        if (this.purchased.getValue()[i].id == id) {
+          purchase.push(this.purchased.getValue()[i]);
+        }
+      }
+    this.activePurchase.next(purchase);
+    console.log(this.activePurchase);
   }
 }
