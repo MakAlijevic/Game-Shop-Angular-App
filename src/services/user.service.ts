@@ -4,6 +4,7 @@ import { CartItem } from 'src/models/cart-item-model';
 import { GamesService } from './games.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/models/user.model';
+import { Purchase } from 'src/models/purchase-model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class UserService {
 
   public users: User[] = [];
   public cart = new BehaviorSubject<CartItem[]>([]);
-  public purchased = new BehaviorSubject<CartItem[]>([]);
+  public purchased = new BehaviorSubject<Purchase[]>([]);
+  public activePurchase = new BehaviorSubject<Purchase[]>([]);
   public selectedCartItemsIds = new BehaviorSubject<number[]>([]);
   public checkoutItems = new BehaviorSubject<CartItem[]>([]);
   public totalPrice = new BehaviorSubject<number>(0);
@@ -49,6 +51,7 @@ export class UserService {
 
   logout() {
     localStorage.clear();
+    this.purchased.next([]);
     this.isLoggedIn.next(false);
   }
 
@@ -104,28 +107,19 @@ export class UserService {
     this.checkoutItems.next(selectedItems);
   }
 
-  purchasedItems() {
-    var checkoutItems = this.checkoutItems.getValue();
-    var selectedItemIds = this.selectedCartItemsIds.getValue();
-    var selectedItems: CartItem[] = [];
-    let totalPrice = 0;
-    var requests = selectedItemIds.map(itemId => this.gamesService.getGameById(itemId));
-
-    forkJoin(requests).subscribe(games => {
-      games.forEach((game, index) => {
-        if (game) {
-          var quantity = checkoutItems.find(checkoutItem => checkoutItem.game.game_id === selectedItemIds[index])?.quantity;
-          var checkoutItem = new CartItem(game, quantity!);
-          totalPrice = totalPrice + (game.moby_score * quantity!);
-          selectedItems.push(checkoutItem);
-          this.totalPrice.next(Number(totalPrice.toFixed(2)));
-        }
-      });
-    });
-    if (selectedItemIds.length === 0) {
-      this.totalPrice.next(0);
+  getPurchasedItems() {
+    var totalPrice: number = 0;
+    var purchase: Purchase = new Purchase([], 0, '', 0);
+    var date = new Date();
+    const items = this.checkoutItems.getValue();
+    for (var i = 0; i < items.length; i++) {
+      totalPrice = totalPrice + (items[i].game.moby_score * items[i].quantity);
+      purchase.games.push(items[i]);
     }
-    this.purchased.next(selectedItems);
+    const formattedDate: string = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    purchase.date = formattedDate;
+    purchase.totalPrice = totalPrice;
+    this.purchased.next([...this.purchased.getValue(), purchase]);
   }
 
   clearCartAfterCheckout() {
@@ -137,5 +131,15 @@ export class UserService {
     this.cart.next(updatedCart);
     this.selectedCartItemsIds.next([]);
     this.totalPrice.next(0);
+  }
+
+  getActivePurchase(id: number) {
+    var purchase: Purchase[] = [];
+      for (var i = 0; i < this.purchased.getValue().length; i++) {
+        if (this.purchased.getValue()[i].id == id) {
+          purchase.push(this.purchased.getValue()[i]);
+        }
+      }
+    this.activePurchase.next(purchase);
   }
 }

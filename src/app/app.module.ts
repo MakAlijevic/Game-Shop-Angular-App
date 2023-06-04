@@ -22,6 +22,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { PurchaseModalComponent } from './purchase-modal/purchase-modal.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
+import { PurchaseCardComponent } from './purchase-card/purchase-card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RegistrationModalComponent } from './registration-modal/registration-mo
     ProfilePageComponent,
     PurchaseModalComponent,
     LoginModalComponent,
-    RegistrationModalComponent
+    RegistrationModalComponent,
+    PurchaseCardComponent
   ],
   imports: [
     BrowserModule,

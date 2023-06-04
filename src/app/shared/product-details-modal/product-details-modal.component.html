@@ -29,9 +29,13 @@
                                             }}</span></h2>
                                 </div>
                                 <div class="col-4">
-                                    <button class="btn add-to-cart-btn"
-                                        (click)="addItemToCart(activeGame[0].game_id)">Add
-                                        to cart</button>
+                                    <button class="btn add-to-cart-btn" *ngIf="isLoggedIn; else loginModalButton" (click)="addItemToCart(activeGame[0].game_id)">
+                                        Add to cart
+                                      </button>
+                                      
+                                      <ng-template #loginModalButton>
+                                        <button class="btn add-to-cart-btn" data-bs-toggle="modal" data-bs-target="#login-modal" >Add to cart</button>
+                                      </ng-template>
                                 </div>
                             </div>
                         </div>

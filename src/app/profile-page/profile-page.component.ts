@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { GamesService } from '../../services/games.service';
-import { Game } from '../../models/game.model';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/models/cart-item-model';
 import { UserService } from 'src/services/user.service';
+import { Purchase } from 'src/models/purchase-model';
+
 
 @Component({
   selector: 'app-profile-page',
@@ -12,25 +13,33 @@ import { UserService } from 'src/services/user.service';
 export class ProfilePageComponent {
   username: string = localStorage.getItem("username") || "User";
   joined: string = localStorage.getItem("joined") || "unknown";
-  trendingGames: Game[] = [];
+  purchasedGames: Purchase[] = [];
 
-  constructor(private gamesService: GamesService, private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.gamesService.getTrendingGames();
-    this.gamesService.trendingGames.subscribe(result => {
-    this.trendingGames = result;
-    })
+    this.getPurchasedGames();
   }
 
-  getActiveGame(id: number) {
-    this.gamesService.getActiveGame(id);
-  }
+  getPurchasedGames() {
+    var purchasedItems: Purchase[] = [];
+    this.userService.purchased.subscribe(result => {
+       purchasedItems = result;
+    });
+
+    for (var i = 0; i < purchasedItems.length; i++) {
+      this.purchasedGames.push(purchasedItems[i]);
+      }
+    }
 
   logout() {
     localStorage.clear();
     this.userService.logout();
     this.router.navigate(['/mainpage']);
+  }
+
+  getActivePurchase(id: number){
+    this.userService.getActivePurchase(id);
   }
 }

@@ -11,6 +11,7 @@ import { UserService } from 'src/services/user.service';
 export class ProductDetailsModalComponent implements OnInit {
 
   activeGame: Game[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(private gamesService: GamesService, private userService: UserService) {
   }
@@ -18,6 +19,9 @@ export class ProductDetailsModalComponent implements OnInit {
   ngOnInit(): void {
     this.gamesService.activeGame.subscribe(result => {
       this.activeGame = result;
+    })
+    this.userService.isLoggedIn.subscribe(result => {
+      this.isLoggedIn = result;
     })
   }
 
